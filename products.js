@@ -332,13 +332,14 @@ window.MULTIMART_PRODUCTS = {
                 var btn = document.createElement('button');
                 btn.className = 'hero-thumb' + (i === 0 ? ' active' : '');
                 btn.setAttribute('data-src', 'img/product-img/' + t);
+                btn.setAttribute('data-product-id', t.replace('.jpg', ''));
                 var labelMap = {0: 'Front view', 1: 'Side view', 2: 'Detail', 3: 'In context'};
                 btn.setAttribute('data-label', labelMap[i] || 'View');
                 btn.innerHTML = '<img src="img/product-img/' + t + '" alt="' + (labelMap[i] || 'View') + '">';
                 btn.addEventListener('click', function() {
                     document.querySelectorAll('.hero-thumb').forEach(function(x) { x.classList.remove('active'); });
                     btn.classList.add('active');
-                    mainImg.src = btn.getAttribute('data-src');
+                    window.location.href = 'product.html?id=' + btn.getAttribute('data-product-id');
                 });
                 thumbsContainer.appendChild(btn);
             });
